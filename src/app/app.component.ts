@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { resolve } from 'url';
+import { AppareilService } from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Steam Cache';
+  isAuth = false;
+
+  appareils: any[];
+   
+  constructor(private appareilService: AppareilService) {
+    setTimeout(
+      () => {
+        this.isAuth = true;
+      }, 4000
+    );
+  }
+
+  onAllumer() {
+    console.log('On allume tout !')
+  }
+
 }
+
+
