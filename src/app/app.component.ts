@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { resolve } from 'url';
 import { AppareilService } from './services/appareil.service';
 
@@ -7,7 +7,7 @@ import { AppareilService } from './services/appareil.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuth = false;
 
   appareils: any[];
@@ -20,8 +20,21 @@ export class AppComponent {
     );
   }
 
+  ngOnInit() {
+    this.appareils = this.appareilService.appareils;
+}
+
   onAllumer() {
-    console.log('On allume tout !')
+    this.appareilService.switchOnAll();
+  }
+
+  onEteindre() {
+    if(confirm('Are you sure to turn off all your devices ?')) {
+      this.appareilService.switchOffAll();
+    } else {
+      return null;
+    }
+
   }
 
 }

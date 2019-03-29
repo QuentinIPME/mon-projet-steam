@@ -19,7 +19,9 @@ import { AppareilService } from './services/appareil.service'
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AppareilService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
